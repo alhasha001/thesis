@@ -22,6 +22,13 @@ dark_yellow = np.array([45, 255, 255])
 # Threshold the HSV image to get chosen colors
 mask = cv2.inRange(hsv, light_yelloy, dark_yellow)
 
+#get coordinates 
+X,Y = np.where(np.all(image== light_yelloy, axis=2)) 
+X1,Y1 = np.where(np.all(image== dark_yellow, axis=2)) 
+
+print("the coordinates are:.....")
+print("light color:  ",X,Y)
+print("dark color:  ",X1,Y1)
 
 # Bitwise-AND mask and original image
 output = cv2.bitwise_and(image,image, mask= mask)
